@@ -1,4 +1,4 @@
-(Chicago GitHub has useful resources)[https://github.com/dssg/hitchhikers-guide]
+[Chicago GitHub has useful resources](https://github.com/dssg/hitchhikers-guide)
 
 # Goals
 

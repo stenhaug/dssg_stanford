@@ -2,10 +2,10 @@
 ## DAY ONE: Setup and familiarize yourself with the data
 
 ### Technical Set up
-Follow the list of instructions [here](../../resources/technical_setup.Rmd) to make sure you are all set on accounts. 
+Follow the list of instructions [here](../../resources/technical_setup.md) to make sure you are all set on accounts. 
 
 ### Working with Sensitive Data
-We are working with sensitive data. It is important to be careful, and follow the procedures listed [here](../../resources/technical_setup.Rmd). 
+We are working with sensitive data. It is important to be careful, and follow the procedures listed [here](../../resources/technical_setup.md). 
 
 ### Familiarize yourself with the platelet data
 

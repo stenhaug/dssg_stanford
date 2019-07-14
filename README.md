@@ -4,6 +4,7 @@ Welcome to the Stanford Data Science for Social Good summer program!
 
 ### What is the Stanford DSSG program?
 
+*TODO: fill in*
 
 ### Program Norms
 1. Be on time (things start and end on time)
@@ -11,8 +12,8 @@ Welcome to the Stanford Data Science for Social Good summer program!
 1. Communicate
 1. Don't interrupt
 1. Appropriate use of technology
-  + No social media during the workday
-  + Limit use of cell phones, texting
+  * No social media during the workday
+  * Limit use of cell phones, texting
 1. Be present and engaged!
 
 We will create norms for each of the groups together. 

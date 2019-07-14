@@ -8,13 +8,13 @@ Welcome to the Stanford Data Science for Social Good summer program!
 
 ### Program Norms
 1. Be on time (things start and end on time)
-1. Give and receive feedback
-1. Communicate
-1. Don't interrupt
-1. Appropriate use of technology
-  * No social media during the workday
-  * Limit use of cell phones, texting
-1. Be present and engaged!
+2. Give and receive feedback
+3. Communicate
+4. Don't interrupt
+5. Appropriate use of technology
+    * No social media during the workday
+    * Limit use of cell phones, texting
+6. Be present and engaged!
 
 We will create norms for each of the groups together. 
 

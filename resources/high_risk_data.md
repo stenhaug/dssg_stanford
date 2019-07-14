@@ -1,9 +1,4 @@
----
-title: "high_risk"
-author: "E Flynn"
-date: "7/14/2019"
-output: html_document
----
+
 
 ### Working with High-Risk and Sensitive Data
 This summer, the projects will be working with sensitive data. You completed HIPAA and CITI trainings to help prepare you to work with these data. 

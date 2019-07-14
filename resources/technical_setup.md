@@ -1,9 +1,3 @@
----
-title: "Technical Setup"
-author: "E Flynn"
-date: "7/12/2019"
-output: html_document
----
 
 ## Technical Setup
 Let's take a few minutes to make sure we are all on the same page in terms of technical set up. The technical mentors will be walking around - don't hesitate to reach out if you are stuck during this process!

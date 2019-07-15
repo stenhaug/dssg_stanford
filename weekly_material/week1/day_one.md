@@ -29,6 +29,7 @@ Mike provided an intro the platelet data. You'll be hearing a lot more about the
       * `PAT_ID`, `PAT_MRN_ID` - these are the patient IDs
       * `LOCATION_DAY` - the day, we have indexed the data relavtive to a particular date (some days are negative)
       * More information is provided in the keys sent via slack (e.g. a key for `LOCATION_NAME`)
+
   These will be present and consistent across all files!
 
 We will now divide up into groups to get familiar with the data.

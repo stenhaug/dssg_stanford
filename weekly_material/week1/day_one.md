@@ -4,6 +4,8 @@
 ### Technical Set up
 Follow the list of instructions [here](../../resources/technical_setup.md) to make sure you are all set on accounts. 
 
+Also sign up for Stanford GitLab - go to 'code.stanford.edu', click sign in on the top right and then log in. This will give you an account! We will use this later. :)
+
 ### Working with Sensitive Data
 We are working with sensitive data. It is important to be careful, and follow the procedures listed [here](../../resources/high_risk_data.md). 
 
@@ -25,8 +27,10 @@ Mike provided an intro the platelet data. You'll be hearing a lot more about the
   + A lot of the fields are de-identified using a hash.
   + A couple important fields to consider:
       * `PAT_ID`, `PAT_MRN_ID` - these are the patient IDs
-      * `LOCATION_DAY` - this is the location, all days are indexed relative to a particular start data
-  These will be present across all types of data.
+      * `LOCATION_DAY` - the day, we have indexed the data relavtive to a particular date (some days are negative)
+      * More information is provided in the keys sent via slack (e.g. a key for `LOCATION_NAME`)
+
+  These will be present and consistent across all files!
 
 We will now divide up into groups to get familiar with the data.
 

@@ -5,7 +5,7 @@
 Follow the list of instructions [here](../../resources/technical_setup.md) to make sure you are all set on accounts. 
 
 ### Working with Sensitive Data
-We are working with sensitive data. It is important to be careful, and follow the procedures listed [here](../../resources/technical_setup.md). 
+We are working with sensitive data. It is important to be careful, and follow the procedures listed [here](../../resources/high_risk_data.md). 
 
 ### Familiarize yourself with the platelet data
 
@@ -32,7 +32,7 @@ Now it's time to take a look at the platelet data!
      - Open terminal and type:  `ssh <sunet>@nero.compute.stanford.edu` 
      - You will be prompted to sign in with your username and password (and two-step authentication)
 
-3. The data are located at `path_name`. *TODO - fill in*
+3. The data are located in `input_data`. 
  * Best practices note: you should not edit the input data (you should only read in input data and if you need to write it out, do so in a new file)
  * Look at the directory structure - what directories are there? What files are missing?
  

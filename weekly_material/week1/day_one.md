@@ -11,39 +11,28 @@ We are working with sensitive data. It is important to be careful, and follow th
 
 For the first couple weeks, we will be all delving deep into the platelet dataset!
 
-Mike provided an intro these platelet data [here]. *TODO - link*
+Mike provided an intro the platelet data. You'll be hearing a lot more about these data soon, but let's get going and take a look at the data!
 
-Now it's time to take a look at the platelet data!
+1. Connect to Nero and open up RStudio in your web browser (Refer back to the [technical setup](../../resources/technical_setup.md) if you have problems.)
 
-1. Log on to Nero (Refer back to the [technical setup](../../resources/technical_setup.md) if you have problems.)
+2. Create a new project and open up a new R markdown notebook.
 
-2. We will be using R (and RStudio) for the majority of the program. While we recommend and will primarily be providing support for R, you can use your favorite data analysis tool (R, python, matlab, STATA, etc.) to start data exploration.
-*TODO - what is installed on the server? Help with this*
+3. All the data are located in the `/share/pi/dssg/platelet/input_data/v0`. There are four sub-directories, each have multiple files. 
+   -   *Best practices note: you should not edit the input data (you should only read in input data and if you need to write it out, do so in a new file)*
 
+4. Pick a file, use R to read it in! Let us know if you have problems. 
 
-  * Connecting via RStudio (recommended)
-     - Open a web browser
-     - Login from Jupyter Lab: 
-  `https://nero.compute.stanford.edu`
-     - In the future, this link may work to go directly to RStudio:
-   `nero.compute.stanford.edu/user/<sunet>/rstudio/`
-   If it does not, try to log in from Jupyter lab
-  * Connecting via SSH:
-     - Open terminal and type:  `ssh <sunet>@nero.compute.stanford.edu` 
-     - You will be prompted to sign in with your username and password (and two-step authentication)
+We will now divide up into groups to get familiar with the data.
 
-3. The data are located in `input_data`. 
- * Best practices note: you should not edit the input data (you should only read in input data and if you need to write it out, do so in a new file)
- * Look at the directory structure - what directories are there? What files are missing?
- 
-We will now divide up into groups to better look at the data.
+#### Group Activity: Understand a Data in a Directory
+Each of the groups have been assigned a directory to explore. Within your group, start looking at the data. 
 
-#### List of questions
+1. What is in your directory? What is the file naming convention?
+2. What are the data fields? 
+  * Which fields are hashed? 
+  * Which fields vary?
+  * Which fields appear useful?
+3. Once you have gotten familiar with the tables in your directory, think about what information is contained in them. What would be useful to summarize? Plot?
+4. Within your group, general this summary and report?
 
-With your group, go through the files.
-
-1. What is in your directory?
-1. What are the data fields?
-1. Plot + summarize something
-
-You will then be asked to present this to the rest of the group.
+Your group will then be asked to present this to the other groups. 

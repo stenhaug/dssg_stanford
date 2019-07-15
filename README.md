@@ -10,13 +10,13 @@ The Stanford DSSG program trains aspiring researchers to work on real-world data
 3. Communicate
 4. Don't interrupt
 5. Limit electronic distractions
-  * No phones or social media during
+  * No phones or social media during activities
 6. Be present and engaged!
 
 We will create norms for each of the groups together. 
 
 ### Code of Conduct
-This program follows the Stanford [Code of Conduct](https://adminguide.stanford.edu/chapter-1/subchapter-1/policy-1-1-1)
+This program abides by the Stanford [Code of Conduct](https://adminguide.stanford.edu/chapter-1/subchapter-1/policy-1-1-1).
 
 ### Culture
 Our ultimate goal is to create a psychologically warm, safe, and productive environment for learning. 

@@ -11,7 +11,7 @@ We sent out invites to the slack workspace [stanford-dssg.slack.com]. We will be
 
 #### Google calendar
 DSSG is using a Google calendar to keep track of all program events.
-It only works with gmail - so slack your gmail account to one of us in a message and then you'll get an invite. Double check you are able to add this to your calendar!
+It only works with gmail - so slack your gmail account to Emily in a message and then you'll get an invite. Double check you are able to add this to your calendar!
 
 ### Connecting to Nero
 We will be using [Nero](http://med.stanford.edu/nero.html) this summer. Nero is a server for moderate-to-high risk data. We are using this server because the majority of the data we are using is medical data. We will talk more about this more in detail throughout the program. 
@@ -24,16 +24,16 @@ You should have received an email this morning welcoming you to Nero. The instru
    * To set this up, you have to first install the Cisco VPN client. Instructions are [here](https://uit.stanford.edu/service/vpn/). Select your OS under the `Get Started` section to get detailed instructions on how to install and connect to the Stanford VPN on your operating system.
    * Connect to Stanford VPN.
 
-2. Today - we're gonna check that you can access Nero in two ways:
-    * Web browser (recommended):
-     - Open a web browser
-     - Login to Nero's Jupyter Lab: `https://nero.compute.stanford.edu`
-     - Click the link for RStudio
-     - In the future, this link should work to go directly to RStudio:
+2. Today - we're go*nna check that you can access Nero in two ways:
+    * **Web browser** (recommended):
+       - Open a web browser
+       - Login to Nero's Jupyter Lab: `https://nero.compute.stanford.edu`
+       - Click the link for RStudio
+       - In the future, this link should work to go directly to RStudio:
    `https://nero.compute.stanford.edu/user/<sunet>/rstudio/`
-     - (If it does not, try to log in from Jupyter lab)
+       - (If it does not, try to log in from Jupyter lab)
    
-   * Connecting via SSH (this will be useful for submitting jobs in the future):
+   * **Connecting via SSH** (this will be useful for submitting jobs in the future):
      - Open terminal and type:  `ssh <sunet>@nero.compute.stanford.edu` 
      - You will be prompted to sign in with your username and password (and two-step authentication)
      - This connects you to a login node, here you can look at the directory structure.

@@ -24,7 +24,7 @@ You should have received an email this morning welcoming you to Nero. The instru
    * To set this up, you have to first install the Cisco VPN client. Instructions are [here](https://uit.stanford.edu/service/vpn/). Select your OS under the `Get Started` section to get detailed instructions on how to install and connect to the Stanford VPN on your operating system.
    * Connect to Stanford VPN.
 
-2. Today - we're go*nna check that you can access Nero in two ways:
+2. Today - we're gonna check that you can access Nero in two ways:
     * **Web browser** (recommended):
        - Open a web browser
        - Login to Nero's Jupyter Lab: `https://nero.compute.stanford.edu`

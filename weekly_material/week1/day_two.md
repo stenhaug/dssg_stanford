@@ -24,10 +24,23 @@ Let's go through the activity in `week1/tidyr_intro.Rmd` now!
 ### Individual Datasets
 Yesterday in pairs, you summarized each of the four types of data (`census`, `cbc`, `inventory`, `transfused`) and looked closely at one day - `day19`. Now it's time to put together all the data from the directory. We are going to use the skills you just learned to do this.
 
+First, let's set up a git for this. We will all be working with the platelet data - so let's all clone the `platelet_processing` repository from the group GitLab. (Note: here we are not forking and then cloning, we are just cloning.)
+
+First, in your pair, have someone create a branch (e.g. 'cbc', 'census', etc.) using the plus button. *This only should be done once per pair!*. You will be collaborating on this branch.
+
+Clone platelet_processing to your directory on Nero (refer to the GitLab Setup [Instructions](../../resources/gitlab_setup.md) as needed. 
+
+Switch to the branch you are working on using:
+ `git checkout <branch_name>`
+ 
+This is where you will add the files for processing your data. 
+
 #### Write a function to read in all the data
 Many of the datasets have data in the `seed_data_hashed/` directory. Look for your files here, you will need to read this in too! (Note many of these days are negative!)
 
-Write a function to read in an individual file of your file type and turn it into a tibble. Which fields do you wnat to extract?
+Write a function to read in an individual file of your file type and turn it into a tibble. Which fields do you want to extract?
+
+As you work on this function, commit it to your local platelet_processing repository.
 
 Test that this function works on a couple different files, make sure it is performing as you expect!
 
@@ -39,6 +52,8 @@ We'll help you get this to work for all the files in a bit.
  * What data is missing?
  * What new questions can you look at once the data is aggregated?
 
+#### Sharing your code
+At the end, we'll have you push the code to GitLab so that everyone can access this!
 
 ### Putting data together across datasets
 

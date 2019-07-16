@@ -76,10 +76,17 @@ If you have edited the same file, you will get an error message about a merge co
 
 **Dealing with Merge conflicts**:
   1) Edit the file with the error. The merge conflicts are surrounded by 
-  ```<<< HEAD 
+  
+  ```
+  <<< HEAD
+  
   edit1
+  
   ==== 
-  edit2 >>> ```
+  
+  edit2 >>>
+  
+  ```
   Select one of the two regions and delete the added characters.
   2) Save and commit this edit.
   3) Now push!

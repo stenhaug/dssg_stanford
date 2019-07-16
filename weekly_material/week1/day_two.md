@@ -1,5 +1,5 @@
 
-## DAY TWO: Tidy data, Loading and Joining
+## DAY TWO: Git, tidy data, Loading and Joining Platelet Data
 
 ### Workflow set up
 
@@ -20,7 +20,7 @@ Press the `Preview` button to render to HTML. This creates a pretty output HTML 
 
 We encourage you to use RMarkdown in your work!
 
-### Data processing - tidyr introduction
+### Data processing - tidyverse introduction
 Let's go through the activity in `week1/tidyr_intro.Rmd` now!
 
 ### Individual Datasets
@@ -54,10 +54,6 @@ Test that this function works on a couple different files, make sure it is perfo
 Try to read in ten files at a time. Can you do this?
 We'll help you get this to work for all the files in a bit.
 
-#### Look at the data
- * Do the trends you observed yesterday in a single day match what you see now?
- * What data is missing?
- * What new questions can you look at once the data is aggregated?
 
 #### Sharing your code
 At the end, we'll have you push the code to GitLab so that everyone can access this!
@@ -97,6 +93,13 @@ Click on `Merge Requests` on the left sidebar and start a new request. Then sele
 
 Now everyone needs to pull from the updated repository, and you will have the functions we all just wrote!
 
+#### Look at the data
+ * Do the trends you observed yesterday in a single day match what you see now?
+ * What data is missing?
+ * What new questions can you look at once the data is aggregated?
+
+### Combining Datasets
+
 #### Full group activity - how do the datasets fit together?
 We will use the board to talk about how the data are linked together. Each group will put up a couple summary/important fields, and we will draw lines between the different tables.
  - What are the keys? 
@@ -116,16 +119,28 @@ Now we will divide into two groups: `patient` and `aggregate`. These represent t
   - what fields are important from which data files?
   - how are you going to put the data together? what will you join on? (what type of join?)
   - what fields will you create?
+  - what tidyverse commands will you use to create these fields?
   
-2. Once your group has developed a plan, let's get going on the code to execute this!
-   - What do we want to do to start writing this code in git? Let's discuss!
-   - Start with data from a couple days (days 20-22) to test your code
+2. Once your group has developed a plan, decide how you are going to collaborate and organize this in git. 
+  * The code will go in the `platelet_processing` repository.
+  * Do you want to fork? Branch? Why? What directory structure will you use?
+  * How will you update?
+
+3. Write the code to put it together:
+   - Start with data from a couple days (days 20-22) to construct your code.
+   - Try using the functions your classmates created to read in the individual datasets. Do they work how you expect?
+      * If there are problems, submit an `Issue` in GitLab describing this!
+         - Go to the side bar in platelet_processing repository and click Issues > New issues. Fill this out.
+         
+4. Join the data together
    - Make sure the output is exactly what you expect! 
         + how many rows do you expect to get based on the data and the overlap? how many do you get? 
-        + make sure you are using the correct join and you know why you chose this      
+        + make sure you are using the correct join and you know why you chose this  
         + are there NAs? where?
     - What initial patterns do you see in the output (if any)?
-3. We can then extend this to the rest of the data files. 
+
+
+5. We can then extend this to the rest of the data files. 
 
 ... now we can ask some EDA questions!
    

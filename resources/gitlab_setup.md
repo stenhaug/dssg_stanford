@@ -48,13 +48,20 @@ You have now committed changes locally. Yay!
 #### Pushing to GitLab
 Let's push this to a remote
   - Go to the terminal within RStudio and type in: `git remote -v`
-  The result should say 'origin' and list the site you cloned from `https://code.stanford.edu/<sunet>/course_materials.git`.
+  The result should say 'origin' and list the site you cloned from "https://code.stanford.edu/<sunet>/course_materials.git".
   
   - Once this is set, switch to the terminal within RStudio and type in `git push origin <branch_name>`. *This will push the code from your local repository's '<branch_name>' branch (what you just edited) to that branch of the 'origin' (your forked repository) on Stanford GitLab.*
+      - The first time you do this, you will have to set your global git config
+      These commands are:
+         git config --global user.name <your_name>
+         git config --global user.email <your_email>
       - You will need to use the access token again every time you push.
    - Open up GitLab in your browser, and switch to this repository. 
-   - **Switching branches on gitlab** On the drop-down menu, where it says "master", press the drop down. Your branch name should appear, click on this.
+   - **Switching branches on gitlab**: On the drop-down menu, where it says "master", press the drop down. Your branch name should appear, click on this.
    - Check that your name appears!
    - Yay! now you've pushed a change to GitLab. 
+
+
+
 
 **Remember - do not commit data!** (the data stays on Nero! in '/share/pi/dssg')

@@ -8,10 +8,9 @@ GitHub, GitLab, and Bitbucket are three platforms built around git. They include
 (Note: even though the repository is at Stanford, do not push the data that is on Nero. It is fine (and we encourage you!) to push your code!)
 
 ### Quick intro to git
-Let's define the following terms as a group: Repository, Commit, Branch, Diff, Remote, Push, Pull, Clone, Fork
+We've defined the following commands: Repository, Commit, Branch, Diff, Remote, Push, Pull, Clone, Fork
 
 You will learn lots more about using git this summer, this is just a quick intro so we can get going :P
 
-Jenny Bryan's Book (Happy Git for the useR)[https://happygitwithr.com] is an excellent reference. Chapter 20 goes over some of these commands in more detail. 
 
 

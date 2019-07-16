@@ -8,7 +8,7 @@ We will be using git on Nero and Stanford hosted GitLab this summer.
  * [Background](../../resources/git_gitlab_intro.md) on git and GitLab
  * [Instructions](../../resources/gitlab_setup.md) for setting up GitLab 
 
-Jenny Bryan's Book (Happy Git for the useR)[https://happygitwithr.com] is an excellent reference for git. 
+Jenny Bryan's Book [Happy Git for the useR](https://happygitwithr.com) is an excellent reference for git. 
 
 #### RMarkdown
 RMarkdown documents help with reproducible analysis of code. They're similar to iPython (or Jupyter) notebooks, and include sections of text interspersed with code "chunks" and the output of running those chunks.
@@ -16,12 +16,15 @@ RMarkdown documents help with reproducible analysis of code. They're similar to 
 Within your local `course_materials` directory, open up the `week1/tidyr_intro.Rmd` file. To create new Rmarkdown files, go to File > New File > Rmarkdown.
 
 Press the `Preview` button to render to HTML. This creates a pretty output HTML page with your notes, code, and the output of running your analysis.
-*Note - you should track only the .Rmd file, not the HTML file im git.*
+*Note - you should track only the .Rmd file, not the HTML file in git.*
 
 We encourage you to use RMarkdown in your work!
 
 ### Data processing - tidyverse introduction
 Let's go through the activity in `week1/tidyr_intro.Rmd` now!
+
+At the end, save, commit, and push to GitLab with:
+`git push origin <my_branch>`
 
 ### Individual Datasets
 Yesterday in pairs, you summarized each of the four types of data (`census`, `cbc`, `inventory`, `transfused`) and looked closely at one day - `day19`. Now it's time to put together all the data from the directory. We are going to use the skills you just learned to do this.

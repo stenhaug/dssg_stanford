@@ -11,41 +11,34 @@ We will be using git on Nero and Stanford hosted GitLab this summer.
 #### RMarkdown
 RMarkdown documents help with reproducible analysis of code. They're similar to iPython (or Jupyter) notebooks, and include sections of text interspersed with code "chunks" and the output of running those chunks.
 
-Open up RStudio, and create an RMarkdown file (File > New File > R Markdown.. and keep the default as HTML). 
+Within your local `course_materials` directory, open up the `week1/tidyr_intro.Rmd` file. To create new Rmarkdown files, go to File > New File > Rmarkdown.
 
-Press the `knit` button to render to HTML. This creates a pretty output HTML page with your notes, code, and the output of running your analysis.
+Press the `Preview` button to render to HTML. This creates a pretty output HTML page with your notes, code, and the output of running your analysis.
 *Note - you should track only the .Rmd file, not the HTML file im git.*
 
 We encourage you to use RMarkdown in your work!
 
-### Data processing
-
-#### Tidyverse commands for data transformation
-*TODO - link to activity*
-
-#### What is tidy data? (and what isn't!)
-*TODO - fill in *
+### Data processing - tidyr introduction
+Let's go through the activity in `week1/tidyr_intro.Rmd` now!
 
 ### Individual Datasets
 Yesterday in pairs, you summarized each of the four types of data (`census`, `cbc`, `inventory`, `transfused`) and looked closely at one day - `day19`. Now it's time to put together all the data from the directory. We are going to use the skills you just learned to do this.
 
-#### Read in all your data
+#### Write a function to read in all the data
 Many of the datasets have data in the `seed_data_hashed/` directory. Look for your files here, you will need to read this in too! (Note many of these days are negative!)
 
 Write a function to read in an individual file of your file type and turn it into a tibble. Which fields do you wnat to extract?
 
 Test that this function works on a couple different files, make sure it is performing as you expect!
 
-*TODO - will this have memory problems?*
-*TODO - committing and communicating the results?*
+Try to read in ten files at a time. Can you do this?
+We'll help you get this to work for all the files in a bit.
 
 #### Look at the data
  * Do the trends you observed yesterday in a single day match what you see now?
  * What data is missing?
  * What new questions can you look at once the data is aggregated?
 
-### Intro to relational data: what is a join?
-*TODO - link to activity*
 
 ### Putting data together across datasets
 

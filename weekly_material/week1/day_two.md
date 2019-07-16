@@ -9,7 +9,14 @@ We will be using git on Nero and Stanford hosted GitLab this summer.
  * [Instructions](../../resources/gitlab_setup.md) for setting up GitLab 
 
 #### RMarkdown
-*TODO - fill in*
+RMarkdown documents help with reproducible analysis of code. They're similar to iPython (or Jupyter) notebooks, and include sections of text interspersed with code "chunks" and the output of running those chunks.
+
+Open up RStudio, and create an RMarkdown file (File > New File > R Markdown.. and keep the default as HTML). 
+
+Press the `knit` button to render to HTML. This creates a pretty output HTML page with your notes, code, and the output of running your analysis.
+*Note - you should track only the .Rmd file, not the HTML file im git.*
+
+We encourage you to use RMarkdown in your work!
 
 ### Data processing
 

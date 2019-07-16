@@ -17,3 +17,5 @@ The main key points are:
     + If you need to send an email that may be sensistive or transfer sensitive material, you can use [Stanford Secure email](https://uit.stanford.edu/service/secureemail) and/or [Stanford Medicine Box](https://uit.stanford.edu/service/box). Ask technical mentors to help with this. 
 
 If you have any questions, please do not hesitate to reach out. It is better to ask and learn than to do something that breaches data security! There is no question too trivial to ask here.
+
+*Mistakes sometimes do happen. Be very careful and diligent to avoid these, but if there is a mistake, it is important to report it immediately. Stanford has systems in place for handling this.*

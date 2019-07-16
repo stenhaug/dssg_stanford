@@ -4,8 +4,6 @@
 ### Technical Set up
 Follow the list of instructions [here](../../resources/technical_setup.md) to make sure you are all set on accounts. 
 
-Also sign up for Stanford GitLab - go to 'code.stanford.edu', click sign in on the top right and then log in. This will give you an account! We will use this later. :)
-
 ### Working with Sensitive Data
 We are working with sensitive data. It is important to be careful, and follow the procedures listed [here](../../resources/high_risk_data.md). 
 
@@ -19,11 +17,14 @@ Mike provided an intro the platelet data. You'll be hearing a lot more about the
 
 2. Create a new project and open up a new R markdown notebook.
 
-3. All the platelet data are located in the `/share/pi/dssg/platelet/input_data/v0`. There are four sub-directories, each have multiple files. 
+3. All the platelet data are located in the `/share/pi/dssg/platelet/input_data/v0`. (For more info about the general Nero directory structure, read [this](server_structure.md)). 
+Within the platelet data, there are four sub-directories, each have multiple files: 
    -   *Best practices note: you should not edit the input data (you should only read in input data and if you need to write it out, do so in a new file)*
-
+   -  Stay in your home directory, and use the path to this file
+   
 4. Then, read in the following file with R:
  `seed_data_hashed/LAB-BB-CSRP-Census_Daily-day-4:08-00-34.csv`
+ (We recommend using the full path for this)
   + A lot of the fields are de-identified using a hash.
   + A couple important fields to consider:
       * `PAT_ID`, `PAT_MRN_ID` - these are the patient IDs
@@ -37,10 +38,11 @@ We will now divide up into groups to get familiar with the data.
 #### Group Activity: Understand the Platelet Data in a Directory
 Each of the groups have been assigned a directory to explore. Within your group, start looking at the data.
 
-The three directories are
+The directories to look at are:
   * `census_data_hased/`
   * `cbc_data_hashed/`
   * `transfused_data_hashed/`
+  * `inventory_data_hashed/`
 
 1. What is in your directory? What is the file naming convention?
 2. What are the data fields? 

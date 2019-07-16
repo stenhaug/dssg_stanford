@@ -13,6 +13,9 @@ We sent out invites to the slack workspace [stanford-dssg.slack.com]. We will be
 DSSG is using a Google calendar to keep track of all program events.
 It only works with gmail - so slack your gmail account to Emily in a message and then you'll get an invite. Double check you are able to add this to your calendar!
 
+#### GitLab
+Sign up for Stanford GitLab - go to 'code.stanford.edu', click sign in on the top right and then log in. This will give you an account! We will use this later. :)
+
 ### Connecting to Nero
 We will be using [Nero](http://med.stanford.edu/nero.html) this summer. Nero is a server for moderate-to-high risk data. We are using this server because the majority of the data we are using is medical data. We will talk more about this more in detail throughout the program. 
 
@@ -47,24 +50,7 @@ You should have received an email this morning welcoming you to Nero. The instru
 Note: We will be using R (and RStudio) for the majority of the program. While we recommend and will primarily be providing support for R, if you want to use other tools for specific tasks, that is ok.
 
 
-#### Server directory structure
 
-Let's get comfy with the Nero!
-
-We will be using bash commands to take a look at the directory structure. If you're not familiar with bash, the main two commands you need today are:
-   * `cd` to change to a directory
-   * `ls` to list files within a directory
-If you are interested, here is a quick bash essentials [cheat sheet](https://gist.github.com/raineorshine/9898350#file-bash-essentials-sh). We will be going over this and other bash commands in more detail as you need it.
-
-Directory paths:
- * `/home/<sunet>/` or `~`: this is your home directory. This is where you want to work on your code. Only you can access this directory.
- * `/share/pi/dssg/` - this is the location for all DSSG shared folders. Within this directory, there will be some educational materials (under `materials/`, we will use this tomorrow), and the project directories
-  * under `platelet/`, we have the following:
-      - `input_data/` - this is where the data is located. Note - you can only **read** from this directory, you cannot **write** to it.
-      - `collab_files/` - this is for you and other students to put collaborative folders, you can **read and write** to this directory. Feel free to create folders here for the different parts of the project and tasks.
-      
-
-Now you're set up to start looking at data!
 
 
 

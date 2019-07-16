@@ -24,8 +24,9 @@ Let's go through the activity in `week1/tidyr_intro.Rmd` now!
 ### Individual Datasets
 Yesterday in pairs, you summarized each of the four types of data (`census`, `cbc`, `inventory`, `transfused`) and looked closely at one day - `day19`. Now it's time to put together all the data from the directory. We are going to use the skills you just learned to do this.
 
-First, let's set up a git for this. We will all be working with the platelet data - so let's all clone the `platelet_processing` repository from the group GitLab. (Note: here we are not forking and then cloning, we are just cloning.)
+First, let's set up a git for this. We will all be working with the platelet data - so let's all clone the `platelet_processing` repository from the group GitLab. (Note: here we are not forking and then cloning, we are just cloning.) 
 
+There is a directory `individual_datasets` that we will be working in.
 First, in your pair, have someone create a branch (e.g. 'cbc', 'census', etc.) using the plus button. *This only should be done once per pair!*. You will be collaborating on this branch.
 
 Clone platelet_processing to your directory on Nero (refer to the GitLab Setup [Instructions](../../resources/gitlab_setup.md) as needed. 
@@ -54,6 +55,8 @@ We'll help you get this to work for all the files in a bit.
 
 #### Sharing your code
 At the end, we'll have you push the code to GitLab so that everyone can access this!
+
+
 
 ### Putting data together across datasets
 

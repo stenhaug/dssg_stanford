@@ -1,4 +1,4 @@
-## DAY TWO: Git, Tidying the Platelet Data Part II
+## DAY THREE: Git, Tidying the Platelet Data Part II
 
 ### Finish up the single directory data tidying task
 We are finishing tidying the individual datasets.
@@ -26,9 +26,15 @@ To review the git concepts we discussed yesterday, go [here](../../resources/git
 ### Collaborating on Coding Projects
 Now everyone will pull from the `origin` on GitLab to their the `master` branch in their local repository.
 
-Swap datasets with the other pair at your table and try using the functions the other group created to read in a dataset. Do they work how you expect?
-    * If there are problems, submit an `Issue` in GitLab describing this!
+Swap datasets with the other pair at your table and try using the functions the other group created to read in their dataset type. Does it work how you expect?
+    * How could it be improved?
+    * Submit one of these small improvements as `Issue` in GitLab!
         - Go to the side bar in platelet_processing repository and click Issues > New issues. Fill this out.
+
+Resolve the `Issue` that the other group posted about your data.
+
+Now let's all discuss some improvements and what we could have done better. 
+
 
 ### Creating the patient and aggregate datasets
 Now we will divide into two groups: `patient` and `aggregate`. 
@@ -52,23 +58,3 @@ Now we will divide into two groups: `patient` and `aggregate`.
  * What data is missing?
  * What new questions can you look at once the data is aggregated?
 
-
-
-- commits
-- what is a diff
-- history
-
-`git blame`
-- what is a tag?
-
-
-what to do if you made a change you dont like
-
-
-NEXT WEEK 
- go back to the previous commit:
-   `git reset --hard`
-   saved changes but not yet committed
-   
-   `git revert`
-   `git reset`

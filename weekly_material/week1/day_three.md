@@ -15,12 +15,12 @@ Remember - there is data in `seed_data_hashed` you also need to include! Check f
 Once all of your data is tidy, save it on Nero. Other groups will be using it.
 The data should be saved to: `/share/pi/dssg/platelet/collab_data/`
 
+The other groups will also be repeating your analysis! Make sure your code works and is reproducible. 
 A couple things to focus on as you finish up:
  * **names** should be informative! of files, of functions, etc
- * the function takes as input one dataset and outputs another
- * you should have one file with this function
- * document the function! what does it do? what are the inputs? outputs?
- * how did you run it on all the data? provide this code
+ * use functions
+ * document! what does it do? what are the inputs? outputs?
+ * how did you run it on all the data? provide this code in RMarkdown
  * put all of the rest of your scratch code in a separate `sandbox_<group>` directory
 
 Once it is all pushed to your branch on GitLab, put in a `Merge Request` for the code on your branch.
@@ -33,7 +33,7 @@ To review the git concepts we discussed yesterday, go [here](../../resources/git
 ### Collaborating on Coding Projects
 Now everyone will pull from the `origin` on GitLab to their the `master` branch in their local repository.
 
-Swap datasets with the other pair at your table and try using the functions the other group created to read in their dataset type. Does it work how you expect?
+Swap datasets with the other pair at your table and try using their RMarkdown code to re-run the analysis. Does it work how you expect?
     * How could it be improved?
     * Submit one of these small improvements as `Issue` in GitLab!
         - Go to the side bar in platelet_processing repository and click Issues > New issues. Fill this out.

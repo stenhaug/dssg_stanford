@@ -21,18 +21,50 @@ Press the `Preview` button to render to HTML. This creates a pretty output HTML 
 We encourage you to use RMarkdown in your work!
 
 ### Data processing - tidyverse introduction
-Let's go through the activity in `week1/tidyr_intro.Rmd` now!
+We went through `week1/tidyr_intro.Rmd` in `platelet_processing` to get familiar with some tidyverse commands and using them on the platelet data. 
+
+Ben gave an excellent intro to R value types (use 'class') and data.frames.
+*REMEMBER: factors are risky, don't use factors unless you make a concentrated decision to do so!*
+
+Ben then gave an intro to tidyverse commands, we focused on:
+`select()`, `filter()`, `mutate()`, `group_by()` and `summarize()`. 
+
+Then we went over how to join the data using `left_join()`, `right_join()`, `inner_join()`, and `full_join()`.
+
+Later, Ben discussed what tidy data is:
+
+Hadley Wickham's [Intro to R For Data Science](https://r4ds.had.co.nz/) is an excellent resource for this.
+
+### Finishing the platelet activity
+Get into pairs and discuss the platelet activity you worked on before, make sure you agree on answers!
 
 At the end, save, commit, and push to GitLab with:
 `git push origin <my_branch>`
 
-### Individual Datasets
+
+### Tidying the platelet data
+
+Big picture: We will be looking at the data from two perspectives: 
+ - `patient_trajectories` 
+    + what patient features are related to platelet transfusion? 
+    + what does a patient trajectory look like?
+ - `aggregate_data` 
+    + what hospital population counts are predictive of platelet transfusions?
+    + how do hospital patterns change over time?
+
+#### Full group activity - how do the datasets fit together?
+We will use the board to talk about how the data are linked together. Each group will put up a couple summary/important fields, and we will draw lines between the different tables.
+ - What are the keys? 
+ - What are the unique identifiers? 
+ - How would you put it together?
+
+#### Processing all the directories
 Yesterday in pairs, you summarized each of the four types of data (`census`, `cbc`, `inventory`, `transfused`) and looked closely at one day - `day19`. Now it's time to put together all the data from the directory. We are going to use the skills you just learned to do this.
 
 First, let's set up a git for this. We will all be working with the platelet data - so let's all clone the `platelet_processing` repository from the group GitLab. (Note: here we are not forking and then cloning, we are just cloning.) 
 
 There is a directory `individual_datasets` that we will be working in.
-First, in your pair, have someone create a branch (e.g. 'cbc', 'census', etc.) using the plus button. *This only should be done once per pair!*. You will be collaborating on this branch.
+First, in your pair, have someone create a branch (e.g. 'cbc', 'census', etc.) using the plus button. You will be collaborating on this branch.
 
 Clone platelet_processing to your directory on Nero (refer to the GitLab Setup [Instructions](../../resources/gitlab_setup.md) as needed. 
 
@@ -54,9 +86,7 @@ As you work on this function, commit it to your local platelet_processing reposi
 
 Test that this function works on a couple different files, make sure it is performing as you expect!
 
-Try to read in ten files at a time. Can you do this?
-We'll help you get this to work for all the files in a bit.
-
+Try to read in all the files!
 
 #### Sharing your code
 At the end, we'll have you push the code to GitLab so that everyone can access this!
@@ -64,7 +94,6 @@ At the end, we'll have you push the code to GitLab so that everyone can access t
 ##### Collaborating with your partner
 You and your partner are working on a branch together. 
 You each have your own local copy of the code on Nero. In order for your partner to download your code, it must be pushed to GitLab.
-
 
 ##### Pushing to the shared repository
 Once you have made a couple edits, `push` to your shared branch on GitLab. But first, you need to `pull` from the branch to make sure you are up-to-date.
@@ -96,55 +125,5 @@ Click on `Merge Requests` on the left sidebar and start a new request. Then sele
 
 Now everyone needs to pull from the updated repository, and you will have the functions we all just wrote!
 
-#### Look at the data
- * Do the trends you observed yesterday in a single day match what you see now?
- * What data is missing?
- * What new questions can you look at once the data is aggregated?
 
-### Combining Datasets
-
-#### Full group activity - how do the datasets fit together?
-We will use the board to talk about how the data are linked together. Each group will put up a couple summary/important fields, and we will draw lines between the different tables.
- - What are the keys? 
- - What are the unique identifiers? 
- - How would you put it together?
-
-#### Small group activity - set up a join!
-Now we will divide into two groups: `patient` and `aggregate`. These represent two ways of looking a the data. Here are some guiding questions to help understand the intuition behind these two groups:
- - `patient_trajectories` 
-    + what patient features are related to platelet transfusion? 
-    + what does a patient trajectory look like?
- - `aggregate_data` 
-    + what hospital population counts are predictive of platelet transfusions?
-    + how do hospital patterns change over time?
-    
-1. Within each group, talk through:
-  - what fields are important from which data files?
-  - how are you going to put the data together? what will you join on? (what type of join?)
-  - what fields will you create?
-  - what tidyverse commands will you use to create these fields?
-  
-2. Once your group has developed a plan, decide how you are going to collaborate and organize this in git. 
-  * The code will go in the `platelet_processing` repository.
-  * Do you want to fork? Branch? Why? What directory structure will you use?
-  * How will you update?
-
-3. Write the code to put it together:
-   - Start with data from a couple days (days 20-22) to construct your code.
-   - Try using the functions your classmates created to read in the individual datasets. Do they work how you expect?
-      * If there are problems, submit an `Issue` in GitLab describing this!
-         - Go to the side bar in platelet_processing repository and click Issues > New issues. Fill this out.
-         
-4. Join the data together
-   - Make sure the output is exactly what you expect! 
-        + how many rows do you expect to get based on the data and the overlap? how many do you get? 
-        + make sure you are using the correct join and you know why you chose this  
-        + are there NAs? where?
-    - What initial patterns do you see in the output (if any)?
-
-
-5. We can then extend this to the rest of the data files. 
-
-... now we can ask some EDA questions!
-   
 

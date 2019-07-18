@@ -16,7 +16,7 @@ A couple things to keep in mind:
   * what sanity checks are you putting in place?
   * what makes sense? what does not make sense?
 
-Let's document the dataset issues as they come up. I have started a GitLab repo for this `platelet_docs.git`. Clone this repo, edit the markdown doc to add/describe issues, and then pull/push. 
+
 
 ### Getting better at git
 

@@ -1,0 +1,25 @@
+## DAY FOUR:  Data Security and Privacy, Examining the Platelet Data
+
+
+### Data Security and Privacy
+We will be having two sessions today about Data Security and Privacy by Bella from Population Health Sciences and then Chiara this afternoon. We will discuss the readings sent out over slack!
+
+
+### Platelet Group Activity
+
+We will continue working in the groups we were in yesterday for the `patient` and `aggregate` datasets.
+
+A couple things to keep in mind:
+  * you should be using git to work on this
+  * use tidyverse!
+  * start thinking about what questions you want to ask when you put together the data? 
+  * what sanity checks are you putting in place?
+  * what makes sense? what does not make sense?
+
+Let's document the dataset issues as they come up. I have started a GitLab repo for this `platelet_docs.git`. Clone this repo, edit the markdown doc to add/describe issues, and then pull/push. 
+
+### Getting better at git
+
+[Here](../../resources/git_gitlab_help.md) is a list of some commands we've been using.
+
+We will spend some time going over other these and other git scenarios we expect you'll run into.

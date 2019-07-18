@@ -6,6 +6,8 @@
  - John Chambers will be speaking on Friday: think about what questions you might want to ask
  - Read the Data Privacy and Security document sent out via slack before tomorrow's session with Chiara
 
+### Blood center visit
+We visited the Stanford Blood Center in the morning.
 
 ### Finish up the single directory data tidying task
 We are finishing tidying the individual datasets.
@@ -60,8 +62,5 @@ Now we will divide into two groups: `patient` and `aggregate`.
     - What initial patterns do you see in the output (if any)?
 
 
-#### Look at the data
- * Do the trends you observed yesterday in a single day match what you see now?
- * What data is missing?
- * What new questions can you look at once the data is aggregated?
+
 

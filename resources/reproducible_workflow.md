@@ -8,7 +8,7 @@ Data analysis can get messy - especially if the data is messy.
 
 What we do relies on our input data. It's important to be careful! What would happen if we deleted everyone who had missing data? 
 
-First, read the "Intro", "Data management", and "Project organization" of "Good enough practices in scientific computing" (link)[https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510]. What are your key takeaways from this?
+First, read the "Intro", "Data management", and "Project organization" of "Good enough practices in scientific computing" [link](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510). What are your key takeaways from this?
 
 All of your analysis depends on your data processing, so it should be reliable, understandable, automatic, and well documented.
 

@@ -8,12 +8,15 @@ On Friday, Ben went through some example exploratory data analyses of the platel
 EDA is often divided into four categories:
  - univariate and bivariate 
  - graphical and non-graphical
+ 
 This just means considering the variables by themselves and their relation to each other. We will be doing this below.
 
 We'll come up with qs as a group to explore the data!
 The questions will be listed [here](https://docs.google.com/document/d/1tYT1M6zcNxyzjfQLplrZmXzV0iXPiCw0BKxGggEPO7M/edit).
 
 Work through your question. The output of your work will be an .Rmd file with insights, plots, and comments. Your code should be located in your own forked course_materials repository, and must be pushed to GitLab (remember: do not push .html output or data to GitLab).
+
+Take a look at RMarkdown [tips](https://r4ds.had.co.nz/r-markdown.html) from R for Data Science to help you out.
 
 ### EDA for your features
 

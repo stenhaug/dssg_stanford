@@ -24,6 +24,9 @@ Our ultimate goal is to create a psychologically warm, safe, and productive envi
 Please reach out to the technical mentors or faculty at any point in time.
 If you have a concern that you would like to submit anonymously, you can do so [here](https://docs.google.com/forms/d/e/1FAIpQLSfmiXSa1d4n_qEcD7jvVSpCY3LN4_tKHal6Lgi2zQ4eflMmWA/viewform) at any point during the program.
 
+### High-Risk Data
+Make sure to follow appropriate [practices](resources/high_risk_data.md) for working with high risk data.
+
 ### Organization and Links
 We have organized the materials for the summer on the group [GitLab](https://code.stanford.edu/dssg_stanford) and [Google Drive](https://drive.google.com/drive/u/3/folders/174A-mKJi0dqYN8NNDzNI1OE90bSEE4Ig). 
 GitLab contains code and the course site. We are using Google Drive primarily for Documentation and organizing shared files (e.g. powerpoints).
@@ -35,11 +38,12 @@ The structure of the `dssg_stanford` GitLab repository is as follows:
          |---- tech_setup/  <--- for setting up GitLab, etc
          |---- reference/   <--- reference materials for EDA, workflow, git, etc
  |---- daily_material/      <--- what we did each day, organized by week (updated at the end of the day)
+ |---- labs/                <--- group activities
 ```
 
-Other code is located in project-specific repositorities on GitLab.
+Other code is located in project-specific repositorities on GitLab (for the platelet project, this is `platelet_processing`). We will create other repositories with this soon. 
+Documentation for the platelet project will all be on the google drive [here](https://drive.google.com/drive/u/3/folders/1n8nHCkGfctX7iPJfWo1N06dgoRBcnBtI).
 
 #### Tips
-**Make sure you are up-to-date!** In your forked repository - `git pull upstream master` to update!
-
-_Note_: feel free to clone and branch to edit this repo, and put in pull ("merge") requests to get the edits on the website. 
+**Make sure you are up-to-date!** In your repository - `git pull origin master` to update!
+**Note**: feel free to edit this repo and put in pull ("merge") requests to get the edits on the website. 

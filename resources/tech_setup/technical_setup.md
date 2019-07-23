@@ -17,10 +17,9 @@ It only works with gmail - so slack your gmail account to Emily in a message and
 Sign up for Stanford GitLab - go to 'code.stanford.edu', click sign in on the top right and then log in. This will give you an account! We will use this later. :)
 
 ### Connecting to Nero
-We will be using [Nero](http://med.stanford.edu/nero.html) this summer. Nero is a server for moderate-to-high risk data. We are using this server because the majority of the data we are using is medical data. We will talk more about this more in detail throughout the program. 
+We will be using [Nero](http://med.stanford.edu/nero.html) this summer. Nero is a server for moderate-to-high risk data. We are using this server because the majority of the data we are using is medical data. We will talk more about this more in detail throughout the program. We have compiled some information on using Nero [here](../reference/nero_info.md).
 
 You should have received an email this morning welcoming you to Nero. The instructions from the email are summarized here.
-
 
 1. Every time you connect to Nero, you **must** be on the Stanford VPN.
 

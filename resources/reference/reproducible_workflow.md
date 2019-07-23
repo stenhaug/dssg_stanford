@@ -16,9 +16,6 @@ All of your analysis depends on your data processing, so it should be reliable, 
 
 We'll refer to DSSG-Chicago's reference for structuring [repositories](https://github.com/dssg/hitchhikers-guide/tree/master/sources/curriculum/0_before_you_start/pipelines-and-project-workflow). Create a new git repository with your group and start working here. Your organization structure should match this!
 
-### Submitting a bash script to run analysis
-You may need to submit a bash script to run a piece of your analysis. Follow the instructions [here](slurm_intro.md) to do this. 
-
 
 
 

@@ -25,4 +25,15 @@ We need to move a couple files into the `platelet_processing` repository.
 5. Put in a merge request on GitLab.
 
 We will work in these workspaces from now on.
-We are also going to remove the `course_materials` repository because it is now redundant. It is up to you whether you want to delete your forked repo - I recommend you do, but you do not have to. 
+We are also going to remove the `course_materials` repository because it is now redundant. Go to the repo in GitLab, then go to Settings >  Advanced > Remove repository (and fill in the repository name to remove it).
+
+### What branch should I be working on?
+* Your own task or exercise? your branch
+* A shared task? a group or shared branch
+
+### File naming conventions
+Informative names matter!
+
+* Your own files: these are files you work on for one day. The names should be informative and followed by "<sunet>_<date>"
+* Shared notebooks/scripts: these are files you work on with others. The names should be informative. 
+

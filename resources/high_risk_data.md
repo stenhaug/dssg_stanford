@@ -15,6 +15,7 @@ The main key points are:
     + If a field has been de-identified (we used a hash), do not use other external knowledge or linking to other data or any other process to re-identify it.
 4. If you have questions about the data - please ask the technical mentors, faculty, and project partners. 
     + If you need to send an email that may be sensistive or transfer sensitive material, you can use [Stanford Secure email](https://uit.stanford.edu/service/secureemail) and/or [Stanford Medicine Box](https://uit.stanford.edu/service/box). Ask technical mentors to help with this. 
+5. We are working with .Rmd files a lot - make sure sensitive data is not included in the markdown - the markdown is what is saved, the code output is not. Do not commit html files. 
 
 If you have any questions, please do not hesitate to reach out. It is better to ask and learn than to do something that breaches data security! There is no question too trivial to ask here.
 

@@ -38,7 +38,7 @@ The structure of the `dssg_stanford` GitLab repository is as follows:
          |---- tech_setup/  <--- for setting up GitLab, etc
          |---- reference/   <--- reference materials for EDA, workflow, git, etc
  |---- daily_material/      <--- what we did each day, organized by week (updated at the end of the day)
- |---- labs/                <--- group activities
+ |---- labs/                <--- individual learning activities
 ```
 
 Other code is located in project-specific repositorities on GitLab (for the platelet project, this is `platelet_processing`). We will create other repositories with this soon. 

@@ -30,6 +30,24 @@ Nero already has many modules installed
  * Use `module load r`
 
 
+## Installing R packages on Nero
+
+You cannot install R packages in RStudio at the R console or in the R Package GUI. There are two reasons for this:
+  1. Rstudio tries and fails to open up a window with the menu to select which CRAN to download from
+  2. You do not have write access to Nero's R packages - so the packages have to be installed locally.
+
+To install R packages, open terminal:
+```
+module load r
+R
+> install.packages("<package_name>")
+```
+Select the CRAN session, and then wait for the package install to complete. If this succeeds, the R package is installed in your Nero home directory. This means that *you* have the package, but your teammates do not, they have to install it.
+
+When you reload RStudio, you will be able to access the package.
+
+If the package install does not succeed - this may be due to dependencies (particularly if the package depends on Java - which may be fixed by loading java first with "module load java", but may also not). If there is a problem, talk to a technical mentor.
+
 ## SLURM and Submitting Jobs on Nero
 
 Sometimes, an operation takes too long or two much memory to run in RStudio.

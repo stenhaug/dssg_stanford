@@ -8,6 +8,7 @@ On Friday, Ben went through some example exploratory data analyses of the platel
 EDA is often divided into four categories:
  - univariate and bivariate 
  - graphical and non-graphical
+ 
 This just means considering the variables by themselves and their relation to each other. We will be doing this below.
 
 We'll come up with qs as a group to explore the data!

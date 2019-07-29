@@ -3,8 +3,9 @@ Every week you are expected to submit:
   - at least 1 RMarkdown file containing code and images
   - documentation of what you did (either in the Rmarkdown file or in a separate file), and a recap of conversations with partners
   - a text file describing what you worked on -and- the links to the code on GitLab + paths to the data on Nero; this file will be emailed to the technical mentors
+    * this is extremely necessary for us to be able to figure out what you did and how to give feedback!
 
-You also need to present for *10 minutes max* a summary of what you did as a group. This should be a cohesive and concise summary that includes visuals and demonstrates your work as a group. 
+You also need to present for **10 minutes max** a summary of what you did as a group. This should be a cohesive and concise summary that includes visuals and demonstrates your work as a group. 
 
 Deliverables must be realistic, specific, and work towards your final goal. You should have something to show and ask of your partners each week, and this should contribute to that without losing sight of the final goal. Project scoping is challenging! We will keep iterating and you will get better at this skill.
 
@@ -19,4 +20,4 @@ Quick guidelines for scoping:
 
 These resources may be helpful:
   * [https://towardsdatascience.com/how-to-construct-valuable-data-science-projects-in-the-real-world-203a4f520d54]
-  * This is more focused on data science in buisiness settings but is still useful to skim: [https://www.thisismetis.com/blog/scoping-a-data-science-project]
+  * This is more focused on data science in business settings but is still useful to skim: [https://www.thisismetis.com/blog/scoping-a-data-science-project]

@@ -1,0 +1,302 @@
+---
+title: "Modeling"
+author: "Michael Sklar"
+date: "7/24/2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+Modeling
+
+lm example on mtcars
+
+```{r}
+library(tidyverse)
+library(rsample)
+library(car)
+tibcars <- as_tibble(mtcars)
+mtcars
+tibcars
+```
+
+let's say I want to run a model. A simple linear model. What's a good candidate - say, horsepower?
+
+```{r}
+fit <- lm(data = tibcars, mpg ~ hp)
+fit
+```
+OK, what now? Is it good?
+
+```{r}
+summary(fit)
+install.packages("broom")
+library(broom)
+tidy(fit)
+```
+
+....you HAVE to visualize! There is simply no substitute for this (even the summary)
+
+A picture is worth a thousand outputs.
+In particular, graphs will show you things you didn't know to ask for
+
+```{r}
+tibcars %>% 
+  ggplot(aes(y = mpg, x = hp)) + geom_point()
+head(mtcars)
+```
+Does this look like a linear relationship? Maybe?
+
+First - did we forget something?
+```{r}
+tibcars %>% 
+  select(mpg, hp)
+```
+
+```{r}
+# jitter!
+tibcars %>% 
+  ggplot(aes(x = hp, y = mpg)) + geom_jitter(width = 5, height = 1)
+
+tibcars %>% 
+  ggplot(aes(x = hp, y = mpg)) + geom_point(alpha = .2)
+
+install.packages("hexbin")
+library(hexbin)
+tibcars %>% 
+  ggplot(aes(x = hp, y = mpg)) + geom_hex()
+
+```
+
+Let's put the line over top
+```{r}
+tibcars %>% 
+  ggplot(aes(x = hp, y = mpg)) + geom_jitter(width = .5, height = 5) + geom_smooth(method = "lm")
+```
+
+Is this a good model? How would we assess this?
+
+```{r}
+summary(fit)
+```
+
+We could look at the coefficients to see if their significant - this tells us if they're related at all.
+
+The p-value is really small. 
+Does that make this a good model?
+Does a small p-value mean the relationship is meaningful? What does this mean?
+
+Answer: that this is better than the constant model.
+
+(More data = smaller p-value. It's a combination of the effect size and dataset size)
+
+In the graph, it's pretty obvious there's some relationship.
+
+If someone says a car has a certain hp, is this the true expectation of its mpg?
+Where would you trust a prediction from this model?
+
+Look at the residuals
+
+```{r}
+tibcars[-which.max(tibcars$hp),]
+fitnew <- lm(data = tibcars[-which.max(tibcars$hp),], mpg ~ hp)
+tibcars[-which.max(tibcars$hp),] %>% 
+    ggplot(aes(y = residuals(fitnew), x = hp)) + geom_jitter(width = .5, height = 5)  + geom_smooth()
+
+tibcars %>% 
+    ggplot(aes(y = residuals(fit), x = hp)) + geom_jitter(width = .5, height = 5)  + geom_smooth()
+```
+
+Do you see a pattern? Should we add more complexity to this model? 
+
+Let's try it with a quadratic term and compare
+
+```{r}
+fit2 = lm(data = tibcars, mpg ~ poly(hp,2))
+# Why the I() command?
+summary(fit2)
+```
+
+Let's say what we care about is prediction error on a future dataset.
+
+One way to do this is to correct for the optimism inside the training dataset. ("adjusted R-squared; AIC; BIC"). These are classical methods, generally taught in intro statistics courses - and for statistics theory they're very fundamental.
+
+Or do a hypothesis test based on an F-test, or a t-test for the coefficient added.
+
+Practically speaking, for more complicated models, this theory often breaks down. The most general and robust way to get an estimate of model quality is to use validation set. Or, similarly cross-validation. This is one approach used in the platelet paper. This requires only some moderate control over the dependencies in the dataset.
+
+The idea of cross validation: Split the data into 10 folds. Hold out one fold at a time, leaving it out and predicting with the others. We're essentially pretending the left-out fold is like a new dataset. (Typically 9/10 of the data should be accurate enough at representing the full-data model.)
+
+```{r}
+data = tibcars
+nfolds = 10
+ind <- rep_len(1:10,length.out = nrow(tibcars))
+foldcars <- tibcars %>%
+  mutate(fold = sample(ind, replace = FALSE))
+
+model1 = function(x){lm(data = x, mpg ~ hp)}
+model2 = function(x){lm(data = x, mpg ~ hp + I(hp^2))}
+
+cverrors = list()
+for(k in 1:nfolds){
+  trainset <- filter(foldcars, fold != k)
+  testset <- filter(foldcars, fold == k )
+  model <- model1(trainset)
+  cvpreds <- predict.lm(model, testset)
+  cverrors[[k]] = cvpreds - testset$mpg
+}
+
+ssquares <- cverrors %>% 
+  lapply(function(x){sum(x^2)}) %>%
+  unlist %>%
+  sum
+
+cvrmse = sqrt( ssquares/ nrow(tibcars))
+cvrmse
+```
+
+Re-naming this as a function, so that we can use it on both models:
+
+```{r}
+lincv <-function(model = model1, nfolds = nfolds, foldcars = foldcars){
+
+cverrors = list()
+for(k in 1:nfolds){
+  trainset <- filter(foldcars, fold != k)
+  testset <- filter(foldcars, fold == k )
+  fit <- model(trainset)
+  cvpreds <- predict.lm(fit, testset)
+  cverrors[[k]] = cvpreds - testset$mpg
+}
+
+ssquares <- cverrors %>% 
+  lapply(function(x){sum(x^2)}) %>%
+  unlist %>%
+  sum
+
+cvrmse = sqrt( ssquares/ nrow(foldcars))
+return(cvrmse)
+}
+
+lincv(model = model1,nfolds = nfolds, foldcars = foldcars)
+lincv(model = model2,nfolds = nfolds, foldcars = foldcars)
+```
+
+That's a pretty reasonable amount of mean squared error
+
+This is close to the residual standard error in both cases; but the residual standard was optimistic, and more optimistic in the case of the larger model (hence why things like adjusted R squared and AIC exist.) We're going to skip those and just talk about CV, for the reasons stated earlier.
+
+```{r}
+summary(fit)
+summary(fit2)
+```
+
+If there are possible dependencies we should take this into account with our validation procedure. The platelet paper does this, by making sure the predictions only go forward in time.
+
+Why is cross-validation usually upwardly biased?
+(Derivation: it's an average. Each component is slightly upwardly biased)
+
+By the way, the classic way of deciding between two models, is to use hypothesis testing
+
+```{r}
+summary(fit2)
+```
+
+The three stars next to the p-value for hp^2 are from a comparison to the model WITHOUT this predictor - in other words, directly to the model with just hp.
+
+However, cross validation lets you compare various models that aren't nested, and naturally does it in terms of a quantity you care about.
+
+It's up to you whether you think the improvement is enough to justify a more complicated model. Oftentimes, having a bunch of predictors can make your life harder, especially in a fast-changing world (e.g. a hospital that's always changing its census system). Big things get harder to maintain. Statistical significance doesn't give a clear scale for quantifying these tradeoffs.
+
+The CV estimate is a nice way to quantify what you're giving up in terms of model performance. It's generally slightly upwardly biased but by not by much. This is because the 9/10 size datasets has slightly less than the actual total amount of information; but if you're holding out a very small amount of data then it should be nearly unbiased.
+
+Is the upward bias property still true after we've used CV to select our model? (e.g. in terms out out-of-sample error?)
+
+This is actually a pretty subtle point. Model selection via CV biases downward the CV estimate, roughly speaking because it's the minimum of two (nearly) unbiased estimates.
+
+(Prove to yourself: Why is the minimum of two unbiased estimates always biased downward?)
+
+HOWEVER - if the comparison is so extreme that you would ALWAYS be selecting the correct model, then there's little/no biasing. (Why? look at your previous proof)
+
+Unfortunately, it's not easy to quantify the variance of the cross-validation estimate itself, nor is it easy to quantify the bias due to model selection. (Both of these are less of a worry with a huge dataset)
+
+Do you have any idea for how to account for this?
+
+Answer: You might consider doing an extra second layer of cross-validation, where the selection process via CV is done on 90% of data. Something similar to this is done in the platelet paper, where they cross validate to tune a parameter lambda, and then do a rolling validation forward in time.
+
+--------------------------
+
+Going back to standard practices for modeling- 
+
+Sometimes you really care about the distribution of the errors.
+
+You can do a qq-plot to see if they're Gaussian or nearly Gaussian (or sometimes slightly more accurately, t-distributed). This is comparing the distribution to the Gaussian
+
+```{r}
+res = data.frame(residuals(fit2))
+ggplot(res, aes(sample = res[,1])) + geom_qq() + geom_qq_line()
+```
+
+Sometimes you really care about this error distribution, for example making prediction intervals. A gaussian-based 95% prediction interval is probably a bad idea here.
+
+To do this more carefully, we should use corrections for self-influence (and perhaps a t-distribution). All this, plus labeling of extreme points, is automatically done with the qqPlot function in the package "car"
+
+```{r}
+car::qqPlot(fit2)
+```
+
+This was all working with basically one covariate. 
+In practice you'll have a bunch to choose from.
+
+One very common way to handle parameter selection is to keep them all in, and use penalized regression to control the tradeoffs between all of them simultaneously. That's another lecture.
+
+But even if we stick to just multiple regression, there are some things you should definitely be aware of.
+
+When parameters are correlated with each other, this can cause the estimates to become unstable. (We can cover why this happens in a linear regression lecture).
+
+To get an idea of how correlated pairs of predictors are, which is by far the most common issue, you can use the pairs() command.
+
+```{r}
+pairs(tibcars)
+# Let's fix this up a little bit
+pairs(tibcars, cex = .3)
+```
+
+What you're looking for here are instances of near- perfect correlation. These shouldn't be in a model together as predictor.
+
+Mpg and weight look potentially very collinear. This is great news if you're trying to predict one and have the other; but really bad news if you want your model to choose between both of them, because they're almost the same thing - the choice it makes will be very "random" (high-variance) and the parameter coefficients become meaningless. This may or may not matter for the predictions you care about - instability is a very bad thing if you are extrapolating, but the "sum" of both of their contributions to the model can sometimes behave stably. If your question is whether a cofficient is zero, or not, this is extremely bad news - in a sense, the question itself loses its meaning when there is collinearity.
+
+It's possible for three or more things to be collinear despite no two being correlated; but it typically doesn't happen unless there's a reason in the data itself, e.g. if they are accounting columns that are meant to add up.
+
+Question: Say that you looked at the pairs plot. Then used this to pick out weight as a predictor for mpg. Then did a CV estimate for it. Is the CV error estimate upwardly biased?
+
+Finally - outlier detection and influence!
+
+A very similar thing you can do to looking at these marginal correlations, is look more directly into the linear regression, where what matters is how variables are correlated with the outcome after both have been orthogonalized by the other variables.
+
+```{r}
+car::leveragePlots(fit2)
+```
+
+Besides just looking graphically, along each input variable - which you should do if that's feasible -
+
+There are other general tools which account for outliers that you might not be able to see in just a single dimension. 
+
+An influential point is one that really affects the predictions. So it's an outlier - the point itself might be wrong, or unusual; or it's a sign that your model doesn't have enoough data to be stable.
+
+There are various notions of statistical leverage that you can use, depending on your purpose.
+
+A very nice plot you can make to see the influence on the overall prediction set is:
+
+```{r}
+library(car)
+influencePlot(fit2, main="Influence Plot")
+```
+
+The size of the circles is proportional to cook's distance, which summarizes the influence on the entire prediction set. This is perhaps the best general measure of the influence of a point on your model. There are extensions to glm's like logistic regression as well!
+
+The x-values, or hat-values, are a measure of self-influence - how much it affects prediction at the point itself.
+
+The y-values are the residuals, re-scaled by an estimate of standard deviation so that they have variance 1.
+
+It's finding the most extreme data points and picking them out for you to investigate!

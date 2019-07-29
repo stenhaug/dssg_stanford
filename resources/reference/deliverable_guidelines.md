@@ -9,7 +9,13 @@ You also need to present for **10 minutes max** a summary of what you did as a g
 
 Deliverables must be realistic, specific, and work towards your final goal. You should have something to show and ask of your partners each week, and this should contribute to that without losing sight of the final goal. Project scoping is challenging! We will keep iterating and you will get better at this skill.
 
-Quick guidelines for scoping:
+Key Questions for Project Scoping:
+  1. What do you want to get done?
+  2. Who do we need to reach out to? (What phone calls do we have? What do you need to be doing?)
+  3. How do we make sure that each of us is learning what we want to be learning?
+  
+
+Other things to consider:
   - What is the project's overall goal?
   - What did you do last week?
   - What needs to be done next? How does this contribute to the overall goal? Does this step need to be done?

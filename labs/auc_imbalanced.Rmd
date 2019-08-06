@@ -1,20 +1,13 @@
 ---
-title: "auc_student_version"
+title: "auc_imbalanced.Rmd"
 author: "E Flynn"
 date: "8/6/2019"
 output: html_document
 ---
-## Understanding Binary Predictions
+
+### AUC intro
 
 Let's generate data - all we need to make is the outcome and a proba score from a model. You might imagine the outcome is getting the flu this season.
-
-```{r}
-library(tidyverse)
-
-```
-
-
-### Calculating and understanding AUROC curves
 
 ```{r}
 flu_data <- 
@@ -23,28 +16,12 @@ flu_data <-
     select(proba, outcome)
 ```
 
-
 When we create a model, we aren't just outputting probabilities, we want to consider at what probability cutoff we label something a certain way. So if the model output flu probability of 0.9 - do we think someone will get flu? What about 0.6?
 
 To do this, we can select a cutoff. Let's set it to 0.5 - so above 0.5 is predicted flu, below or equal is predicted not flu. 
 
-1. Add a column labeled "pred" that contains the prediction for each row. (Use `mutate`!)
-```{r}
-
-```
-
-2. Now count the number of true positives, false positives, false negatives, and true negatives. (Use `summarize`!)
-```{r}
-
-```
-
-3. Use this to calculate the accuracy, sensitivity, specificity, precision, and recall. 
-```{r}
-
-```
-
 #### Plotting AUC
-4. Now you could imagine taking different cutoffs and getting different proportions of FP, FN, and specificities and sensitivities, etc.
+1. Now you could imagine taking different cutoffs and getting different proportions of FP, FN, and specificities and sensitivities, etc.
 Below is a function to calculate fp/fn/tp/fn, specificity, sensitivity, and accuracy for any cutoff. 
 Look at the code for this. Make sure you understand how it works!  (Hint - try pieces of it.)
   - Add comments at the hashtags.
@@ -85,15 +62,15 @@ Using this we can create an AUROC curve.
 ggplot(flu_cut_auc, aes(x=(1-spec), y=sens))+ geom_point() + geom_line()
 ```
 
-This curve describes how well the model separates the data.
 
-5. Which point would you pick as a cutoff for your model? Why? What might make you change your mind?
+
+. Which point would you pick as a cutoff for your model? Why? What might make you change your mind?
   - What is the number of FP when sensitivity is 0.8?
   - What is the number of FN when specificity is 0.8?
   - (What is the cut point that corresponds to these?)
 
 
-6. What if we guessed randomly? or perfectly? Look at the output of these two and describe. 
+3. What if we guessed randomly? or perfectly? Look at the output of these two and describe. 
 ```{r}
 # PERFECT
 flu_perf <- flu_data %>%
@@ -139,33 +116,23 @@ ggplot(all_dat, aes(x=(1-spec), y=sens, color=type))+ geom_point() + geom_line()
 ```
 
 
-7. We can also do this using the AUC package (you may need to install it).
-Look up the documentation for this and create the same plot below. 
-Then calculate the area under the curve value using `auc`.
-```{r}
-# install.packages("AUC")
-library(AUC)
-```
-
-
 #### Separability
+One way of thinking of the AUC curve is that it describes how well the model separates the data. But we also need to consider whether the data is separable.
+
+4. Look at the three plots below - how well is the data separated? Which areas are the TP, FP, FN, and FP? What do you expect to see for AUROC? What do you expect the AUCs to be? 
+
 Now there are lots of different cutoffs we could choose - and looking at the separability of these cutoffs is how we figure out how well the model separates the outcomes.
 
-In order to understand this, it's important to think through the separability of the outcomes. 
-Let's look at the distributions of the original data. We can add a line at a particular cutoff - such as 0.5.
-
-8. Which areas are the TP, FP, FN, and FP?
 ```{r}
+# original data
 flu_data <- flu_data %>% mutate(
   outcome=as.factor(outcome)
 )
 ggplot(flu_data, aes(x=proba, fill=outcome)) +
   geom_density(alpha=0.4) + 
-  geom_vline(aes(xintercept=0.5), linetype="dashed")
+  geom_vline(aes(xintercept=0.5), linetype="dashed") # draw a line at cutoff = 0.5
 ```
 
-
-9. Look at the two plots below - if your data looks like this, what do you expect to see for AUROC? What do you expect the AUCs to be? 
 ```{r}
 alt_data1 <-
   tibble(proba = c(rnorm(500, 0.3, 0.05), rnorm(500, 0.8, 0.05))) %>%  # sample from two separated normal distributions
@@ -189,54 +156,29 @@ ggplot(alt_data2, aes(x=proba, fill=outcome)) +
 ```
 
 
-### Model comparison
 
-AUROC curves are frequently used in the literature to compare different models.
-
-10. Let's take the "model" we had before and create another model - how do the two compare. Which model would you pick? Why?
-
-```{r}
-flu_data_m2 <- 
-    tibble(proba = runif(1000)) %>%  # sample from a uniform distribution, proba is the probability
-    mutate(outcome = as.integer((proba + runif(1000)) > runif(1000))) %>%  # this creates an outcome with some randomness in the value
-    select(proba, outcome)
-flu_cut_m2 <- cuts %>% map(calc_acc_metrics, flu_data_m2) %>% bind_rows()
-
-flu_cut_m2.2 <- flu_cut_m2 %>% select(spec, sens)
-flu_cut_m2.2$type <- "m2"
-
-# put them together
-all_dat2 <- rbind(all_dat, flu_cut_m2.2)
-
-# plot
-ggplot(all_dat2, aes(x=(1-spec), y=sens, color=type))+ geom_point() + geom_line()
-```
-
-
-### AUPRC curves 
-While AUROC is the most common way to look at this, information retrieval relies on precision and recall. Precision is the number of true positives out of those labeled positive, while recall is the same as sensitivity - the number of positives we label out of the total number of positives. 
+#### Precision-Recall
+While AUROC is the most common way to look at model performance, information retrieval relies on precision and recall. Precision is the number of true positives out of those labeled positive, while recall is the same as sensitivity - the number of positives we label out of the total number of positives. 
 The precision recall curve looks a little different but is very helpful. 
 
-It is just like the AUC plot but with precision and recall as the axes. 
-
-11. Use the `flu_cut_auc` object and plot precision (y-axis) vs. recall (x-axis) using ggplot. 
 ```{r}
-
+flu_cut_pr <- filter(flu_cut_auc, prec != 0) # remove the 0,0 point so we can plot properly
+ggplot(flu_cut_pr, aes(x=recall, y=prec))+geom_point()+geom_line()
 
 ```
 
 
 The "no-skill" line for a precision-recall curve is located at the number of positives/total. We can think of this as if the model always predicts positive. 
 
-12. Where should this line be drawn for the above model? Plot it.
-```{r}
+4. Where should this line be drawn for the above model?  How does this plot look different from the AUC plot? 
 
-```
 
-### Ben's brilliant representation :)
-Ben came up with a great representation to show precision, accuracy, and recall.
+### Ben's excellent representation :)
 
-13. Run his code - what does this look like. Why is this helpful?
+5. Run his code - what does this look like? Let's discuss. 
+Why is this helpful?
+What happens to precision, recall, and accuracy as the number treated increases? 
+At each end?
 ```{r}
 source("ben_acc_pr.R")
 ```
@@ -257,7 +199,7 @@ table(flu_data$outcome) # what was the breakdown before?
 table(flu_data_imb$outcome) # what is the breakdown now?
 ```
 
-14. Plot and calculate the AUC. How does this look? How good do you feel about this model?
+6. Plot and calculate the AUC. How does this look? How good do you feel about this model?
 ```{r}
 imb_counts<- cuts %>% map(calc_acc_metrics, flu_data_imb) %>% bind_rows() 
 ggplot(flu_cut_auc, aes(x=(1-spec), y=sens))+ geom_point() + geom_line()
@@ -266,27 +208,26 @@ ggplot(flu_cut_auc, aes(x=(1-spec), y=sens))+ geom_point() + geom_line()
 
 What if it just so happens that we build a model that realizes there are more no flu outcomes than flu outcomes and decides to always predict that people do not have flu. 
 
-15. How does this compare to the "model" we have before? Calculate maximum accuracy of the "model" above - how does this compare to the accuracy max-class model below? What do you think of the original model now?
+7. How does this compare to the "model" we have before? Calculate maximum accuracy of the "model" above - how does this compare to the accuracy max-class model below? What do you think of the original model now?
 ```{r}
 imb_max_class <- flu_data_imb %>%
     mutate(pred=0) %>%
     acc_counts()
 ```
 
-16. Plot the precision-recall curve for the imbalanced data. Is this helpful? Why? Describe what happens in this plot. 
+8. Plot the precision-recall curve for the imbalanced data. Is this helpful? Why? Describe what happens in this plot. 
 ```{r}
 
 ```
 
 We can see this drops very fast and is quite low. For data with imbalanced classes, precision-recall tends to provide a much better picture of what is going on. 
 
-17. What is the precision and recall of the max-class model?
+9. What is the precision and recall of the max-class model?
 What happens if you swap the classes? (e.g. flu is 0, no-flu is 1, and the no-skill model predicts 1)? Do this. What do we need to be careful about then when looking at precision-recall curves?
 ```{r}
 
 
 ```
 
-
 #### STORM outcome
-18. Look at the AUC plot (Fig 2) in the STORM model we examined on Friday. Given that only 13k patients had an overdose or suicide attempt and the whole dataset is 1.2mil patients - what should you be concerned about when looking at this plot? Discuss. 
+10. Look at the AUC plot (Fig 2) in the STORM model we examined on Friday. Given that only 13k patients had an overdose or suicide attempt and the whole dataset is 1.2mil patients - what should you be concerned about when looking at this plot? Discuss. 

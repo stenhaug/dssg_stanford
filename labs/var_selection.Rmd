@@ -1,0 +1,219 @@
+---
+title: "FeatureSelection"
+author: "E Flynn"
+date: "8/8/2019"
+output: html_document
+---
+
+```{r}
+require('tidyverse')
+require('leaps')
+data(mtcars)
+```
+
+### Creating the features
+1. Think through the features transformations of features.
+This is often domain-specific.
+
+For this example - we created a couple different ones as an example.
+
+```{r}
+
+mtcars$car_name <- rownames(mtcars)
+# e.g there is a rule that you have to pay an expensive tax if cars have > 2 carburators
+mtcars1 <- mtcars %>% 
+  mutate(carb_ge2=ifelse(carb > 2, 1, 0)) %>%
+  mutate(carb_ge4=ifelse(carb > 4, 1, 0)) %>%
+  mutate(is_car=1) %>%
+  mutate(cylinders=ifelse(runif(nrow(mtcars)) > 0.9, cyl, cyl-2))
+
+
+```
+
+The reality is that many of these are actually categorical features, so let's retype them.
+```{r}
+mtcars2 <- within(mtcars1, {
+   vs <- factor(vs, labels = c("V", "S"))
+   is_car <- factor(is_car, labels=c( "1"))
+   am <- factor(am, labels = c("automatic", "manual"))
+   cyl  <- ordered(cyl)
+   cylinders  <- ordered(cylinders)
+   carb_ge2  <- factor(carb_ge2)
+   carb_ge4  <- factor(carb_ge4)
+
+   gear <- ordered(gear)
+   carb <- ordered(carb)
+
+})
+summary(mtcars2)
+
+nrow(mtcars2)
+set.seed(35)
+rows.train <- sample(1:nrow(mtcars2), 24)
+rows.test <- setdiff(seq(1:nrow(mtcars2)), rows.train)
+mtcars2_train <- mtcars2[rows.train,]
+mtcars2_test <- mtcars2[rows.test,]
+
+```
+
+2. Looking for zero variance features
+```{r}
+
+num_only <- data.frame(apply(mtcars2_train %>% select(-vs, -am, -is_car, -carb_ge2, -carb_ge4, -car_name), c(1,2), as.numeric))
+apply(num_only, 2, sd)
+
+
+# if we consider these properly - we will want to look at frequencies for factors
+summary(mtcars2_train %>% select(vs, am, is_car, carb_ge2, carb_ge4))
+
+# V and S have variability, but all of is_car are in the same category
+#  if we had a category where there is very few of an item (e.g. carb_ge4) - we may not want to use it 
+
+```
+
+
+3. Looking at correlation within variables
+```{r}
+pairs(mtcars2_train %>% select(-car_name))
+
+cor.mat <- cor(num_only, method="spearman") # can only do correlation for non-factor, using spearman because many are ordinal vars
+cor.mat
+# disp and cyl have a correlation of 0.9 - we may consider removing one of these
+# two variables - cyl and cylinder are very highly correlated
+#   - this makes sense based on how we created these! but we should remove
+```
+
+Consider removing one variable from highly correlated pairs
+
+```{r}
+mtcars3 <- mtcars2_train %>% select(-cylinders, -disp, -is_car, -carb_ge2, -carb_ge4)  # also remove car var
+colnames(mtcars3)
+```
+
+
+4. Feature selection - we want to predict **mpg** - look at metrics and plot!
+
+correlation with outcome variable (both continuous)
+```{r}
+mpg.df <- data.frame(cor.mat) %>% select(mpg)
+mpg.df$var <- rownames(mpg.df)
+mpg.df %>% 
+  rename("cor"="mpg") %>% 
+  select(var, cor) %>% 
+  filter(!var  %in% c("mpg", "cylinders", "disp")) %>% 
+  arrange(-abs(cor))
+# look for high absolute correlation (e.g. cyl, hp, wt, carb, drat) - these may be informative
+
+# make it long and plot a facet_grid
+head(mtcars3)
+mtcars_long <- mtcars3 %>% gather(key="var", value="value", -"mpg", -"car_name") %>% filter(!var %in% c("am", "vs"))
+mtcars_long$value <- as.numeric(mtcars_long$value)
+ggplot(mtcars_long, aes(y=mpg, x=value)) + geom_point() +
+  facet_grid(cols=vars(var), scales="free_x")
+```
+
+anova (continuous outcome, categorical features)
+```{r}
+
+summary(aov(mpg ~ vs, data=mtcars3))
+summary(aov(mpg ~ am, data=mtcars3))
+
+ggplot(mtcars3, aes(y=mpg,x=am))+geom_boxplot()
+ggplot(mtcars3, aes(y=mpg,x=vs))+geom_boxplot()
+
+```
+
+
+5. Looking at the predictors 
+- Do we see outliers? Does what we're seeing make sense? Should we do variable transformations?
+
+
+- Look for interaction terms? you could add these in..
+
+```{r}
+ggplot(mtcars3, aes(y=mpg, x=qsec, color=factor(am))) +geom_point()
+```
+
+
+
+6. Build a model - what do the coefficients look like
+7. Stepwise
+
+```{r}
+mtcars4 <- mtcars3 %>% select(-car_name)
+fit <- lm(mpg ~ ., data=mtcars4)
+summary(fit)
+```
+
+What is going on here?
+```{r}
+set.seed(101)
+d <- data.frame(x=sample(1:4,size=30,replace=TRUE))
+d$y <- rnorm(30,1+2*d$x,sd=0.01)
+coef(lm(y~x,d)) # intercept is val of y at x=0
+coef(lm(y~factor(x),d)) # intecept is level of y at baseline level of factor
+# you can change this - important to realize this is what it is doing
+
+is1 <- ifelse(d$x==1, 1, 0)
+is2 <- ifelse(d$x==2, 1, 0)
+is3  <- ifelse(d$x==3, 1, 0)
+is4 <- ifelse(d$x==4, 1, 0)
+
+coef(lm(y~factor(x), data=d))
+coef(lm(d$y~is1+is2+is3+is4+0))
+
+coef(lm(y~ordered(x),d)) # intercept = mean level, L = linear, Q = quadratic, C = cubic
+# keeps going - R fits one fewer polynomials than the number of levels
+
+# from: https://stackoverflow.com/questions/25735636/interpretation-of-ordered-and-non-ordered-factors-vs-numerical-predictors-in-m
+
+```
+
+
+
+
+```{r}
+require('leaps')
+# best subsets
+best = summary(regsubsets(mpg ~ ., data = mtcars4, nbest = 2))
+data.frame(best$rsq, best$adjr2, best$cp, best$rss, best$outmat)
+
+# backward - throw all the terms in and then remove those that aren't statistically significant
+fm.full = lm(mpg ~ ., data = mtcars4)
+step(fm.full, direction = "backward")
+```
+
+```{r}
+# forward
+fm.empty = lm(mpg ~ 1, data = mtcars4)
+step(fm.empty, scope = ~. + cyl + hp + drat + wt + qsec + vs + am + gear + carb, direction = "forward")
+```
+
+```{r}
+# stepwise
+step(fm.empty, scope = ~. + cyl + hp + drat + wt + qsec + vs + am + gear + carb, direction = "both")
+```
+
+```{r}
+step_fit <- lm(formula = mpg ~ wt + cyl + hp + am, data = mtcars4)
+summary(step_fit)
+```
+
+How is the prediction performance? Did we overfit?
+```{r}
+
+sum((predict(step_fit, data=mtcars2_test[,colnames(mtcars4)]) -
+mtcars2_test$mpg)**2)
+sum((predict(step_fit, data=mtcars2_train[,colnames(mtcars4)]) -
+mtcars2_train$mpg)**2)
+```
+
+
+(Also - this is a case where we might want to use penalized regression, more on this later!)
+
+By the way, it is possible to do forward stepwise selection with hypothesis testing - often you want some assurance that you are getting something out of each additional predictor you include.
+The simplest approach, working in a forward stepwise framework: when you have added k predictors, consider adding each of the remaining p - k possible ones. Get the t-statistic (or F-statistic) and associated p-value for comparing the current model vs the model with one more predictor; correct these p-values for the multiplicity (p - k); and add the variable with smallest p-value to your model if the corrected p-value is < .05. Repeat.
+For more how on to do this without paying the Bonferroni price, you can read
+(1) "Selective Sequential Model Selection" by
+William Fithian, Jonathan Taylor, Robert Tibshirani, Ryan Tibshirani
+(2) DISCUSSION: “A SIGNIFICANCE TEST FOR THE LASSO” BY A. BUJA AND L. BROWN

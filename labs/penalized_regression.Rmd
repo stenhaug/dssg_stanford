@@ -1,0 +1,148 @@
+---
+title: "penalized regression"
+output: html_document
+---
+
+```{r}
+require('tidyverse')
+data(mtcars)
+```
+  
+```{r}
+# install.packages("glmnet")
+library(glmnet)
+library(tidyverse)
+library(rsample)
+library(modelr)
+```
+
+The code below fits a lasso with lambda = 1
+
+```{r}
+# prepare data
+Y <- mtcars$mpg
+
+X <- 
+    mtcars %>% 
+    select(-mpg) %>% 
+    as.matrix()
+
+# fit, inspect, and predict
+fit <- glmnet(x = X, y = Y, family = "gaussian", lambda = 1)
+
+fit
+
+predict(fit, newx = X)
+
+# What if we don't specify lambda?
+fit <- glmnet(x = X, y = Y, family = "gaussian")
+
+plot(fit) # Can you guess what this is?
+
+coef(fit, s = 2)
+
+cvfit <- cv.glmnet(x = X, y = Y, family = "gaussian")
+cvfit$lambda.min
+
+coef(cvfit)
+
+# Here you can see the whole tradeoff between MSE and model complexity. 
+# The leftmost dotted line is the minimum-cv point. About how many predictors does this cv-selected model have?
+plot(cvfit) 
+```
+
+But how do we actually assess our performance honestly?
+
+Selecting the minimum-cv model, we no longer have an unbiased estimate of the cv error. The selected model's MSE is optimistic
+
+To get a (nearly) unbiased estimate, we can do another layer of cross-validation.
+
+Here is the plan:
+
+We will do leave-one-out cross-validation to assess the entire procedure of [picking the lasso model with best 10-fold cross-validated error]
+What should be the number of folds in the command below?
+
+```{r, error = TRUE}
+folds <- mtcars %>% vfold_cv(v = 32)
+``` 
+   
+Here we will write a function to deal with each fold
+
+```{r}                            
+training(folds$splits[[1]])
+testing(folds$splits[[1]])
+
+# helper function
+lasso_train_test_to_resid <-function(trainset,testset){
+  Y = trainset$mpg
+  
+  X = as.matrix(subset(trainset, select= -mpg))
+  
+  fit <- cv.glmnet(x = X, y = Y, family = "gaussian")
+  
+  testmodeled <- predict(fit, newx = as.matrix(subset(testset, select= -mpg)))
+  
+  as_tibble(testset$mpg - testmodeled)
+}
+```
+
+Then, applying the lasso on each fold
+
+```{r}
+split_to_resid <- function(data, model_train_test_to_resid = lasso_train_test_to_resid){
+  trainset = training(data)
+  testset = testing(data)
+  model_train_test_to_resid(trainset,testset)
+}
+
+resids <- unlist(map(folds$splits,split_to_resid))
+```
+
+From this vector of residuals from each Leave-one-out model, please compute an estimated mse of the lasso:
+
+```{r}
+```
+
+How does this estimate compare to the naive cv estimate of the best lambda?
+HINT: take a look at plot(cvfit)
+
+How does this estimate compare to a complete linear model's out-of-sample performance?
+HINT: take a look at plot(cvfit)
+
+```{r}
+plot(cvfit)
+```
+
+We can also compare this to the performance on stepwise regression
+You know from last week that we can compute a stepwise model with:
+
+```{r}
+step(lm(mpg ~ ., data = mtcars), direction = "backward")
+```
+
+To make a comparison with the lasso performance, we can make use of the same cross-validation code. 
+
+Write the necessary function below:
+
+```{r}
+backward_stepwise_train_test_to_resid <-function(trainset,testset){
+  
+}
+```
+
+Copy/paste and replace the previous lasso cv code to compute a cv estimate of backward stepwise regression
+
+```{r}
+```
+
+By the way, there is another parameter, alpha, accepted by glmnet. Setting alpha to 0 yields ridge regression. 
+
+Copy/paste and replace the previous ridge cv code to compute a cv estimate of ridge regression.
+
+```{r}
+ridge_train_test_to_resid <-function(trainset,testset){
+  
+}
+```
+
+Which model is the best?

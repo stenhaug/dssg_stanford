@@ -5,6 +5,10 @@ date: "8/6/2019"
 output: html_document
 ---
 
+```{r}
+require('tidyverse')
+```
+
 ### AUC intro
 
 Let's generate data - all we need to make is the outcome and a proba score from a model. You might imagine the outcome is getting the flu this season.
@@ -63,8 +67,14 @@ ggplot(flu_cut_auc, aes(x=(1-spec), y=sens))+ geom_point() + geom_line()
 ```
 
 
+```{r}
+flu_cut_auc$cut <- cuts
+flu_cut_auc %>% 
+  filter(acc ==max(acc))
 
-. Which point would you pick as a cutoff for your model? Why? What might make you change your mind?
+```
+
+Which point would you pick as a cutoff for your model? Why? What might make you change your mind?
   - What is the number of FP when sensitivity is 0.8?
   - What is the number of FN when specificity is 0.8?
   - (What is the cut point that corresponds to these?)

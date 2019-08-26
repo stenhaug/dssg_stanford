@@ -18,7 +18,7 @@ Slides are mostly located within the google drive, code is in the gitlab.
 |  1   | 7/18 | Talk: Data Security and Privacy - Bella Chu | [Slides](https://drive.google.com/open?id=1rKkQNHyfs5Yor7EwyIqpktUYuXAS2xrB) |
 |  1   | 7/18 | Discussion: Data Privacy | [Reading](https://drive.google.com/open?id=1xQclT7sqDTK2jc_ZtF3vDmzndiE6onk6), Links [1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005399), [2](http://helper.ipam.ucla.edu/publications/pbd2018/pbd2018_14892.pdf)|
 |  1 | 7/19 | Talk: John Chambers on Data Science | [Slides](https://drive.google.com/open?id=1bXN0A3_4Q6hXnQzc8IWM-8gIS-moJYND)|
-|  2 |  7/22 | Activity: EDA - coming up with qs | Instructions(w1_w2/week2/day_0722.md) |
+|  2 |  7/22 | Activity: EDA - coming up with qs | [Instructions](w1_w2/week2/day_0722.md) |
 |  2   |  7/22 | Training: P-value Basics | |
 |  2   |  7/23 | Talk: Group work - Montse | |
 |  2  | 7/24 | Training: ggplot | [Code](labs/ggplot_session_07_24.Rmd) |

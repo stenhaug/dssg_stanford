@@ -1,0 +1,14 @@
+
+### Ethics Training: Selecting Questions to Research
+
+
+This thursday, in our weekly discussion on “data ethics,” we will be thinking about how to choose what question to ask. Our visit to Google last week made it very clear that there are a lot of datasets out there that have been collected with a variety of purposes and that we can now access to explore a question of our choice. Among other things, this means that the responsibility to choose what question to ask is entirely on us. To appreciate this point, consider how different the situation would be if you were to collect data. Most likely, you would need to secure some sort of financial support (from your employer, a granting agency... ) and to do this you would need to convince someone else that the question you are after is worth asking. If your data involves human subjects, you might have to submit your protocol for review to an IRB or similar. Collecting the data will require time and energy, and most likely the help or cooperation of someone else: you would need to work hard to convince yourself and others that this is a valuable enterprise. 
+
+
+To get us thinking about the process of choosing questions, here are three, quite different, readings. 
+
+1. “If you build it, they will come: unintended future uses of organised health data collections:” https://www.ncbi.nlm.nih.gov/pubmed/27600117 This is an article written from a bio-ethics perspective about the challenges of “data re-use”. It provides a nice connection between the discussion on privacy and informed consent and the topics of choosing questions.
+
+2. Introduction of the book “The Mismeasure of Man” by S.J. Gould. In the revised edition of 1996 this is chapter one and runs from page 51 to 61. I can see it here: https://books.google.com/books?id=WTtTiG4eda0C&pg=PA26&source=gbs_toc_r&cad=3#v= onepage&q&f=false as well as here: https://books.google.com/books?id=RTjfmxTpsVsC Please let me know if you have trouble accessing this and I can provide hard copies. The goal is to get us thinking about the “sociology of knowledge” and how is it that we end up asking some questions rather than others. 
+
+3. “GWAS of 126,559 individuals identifies genetic variants associated with educational attainment:” https://www.ncbi.nlm.nih.gov/pubmed/23722424 This is a technical article, which unfortunately will contain jargon that might not be transparent to you: I am planning to spend a little time on Thursday going over this, but please do not hesitate to ask about clarifications – I will be monitoring slack. Science, publishing as it does findings across all domains, requires articles to have at least one portion that is readable by a wider audience, so hopefully you will be able to get the gist of what is going on – which is really all that matter for our discussion.

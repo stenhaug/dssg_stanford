@@ -39,4 +39,4 @@ The structure of the `dssg_stanford` GitHub repository is as follows:
 Student code is located in private project-specific repositorities on [Stanford GitLab](code.stanford.edu).
 
 
-If you have any questions about the program, materials, or access, feel free to reach out to *stenhaug * AT *stanford* DOT *edu* or *erflynn* AT *stanford* DOT *edu*.
+If you have any questions about the program, materials, or access, feel free to reach out to *stenhaug*  AT *stanford* DOT *edu* or *erflynn* AT *stanford* DOT *edu*.

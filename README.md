@@ -5,15 +5,7 @@ Welcome to the Stanford Data Science for Social Good summer program!
 The Stanford DSSG program trains aspiring researchers to work on real-world data science problems with social impact. 
 
 ### Program Norms
-1. Be on time (things start and end on time)
-2. Give and receive feedback
-3. Communicate
-4. Don't interrupt
-5. Limit electronic distractions
-   * No phones or social media during activities
-6. Be present and engaged!
-
-We created a list of Norms as a group - the google doc is located [here](https://docs.google.com/document/d/1HP1NXb5GQ01RU16QnEu72Q1PcNe8NA2Cwcst4_Dehrk/edit).
+We created a list of Norms as a group at the beginning of the program, they are located [here](resources/program_norms.md)
 
 ### Code of Conduct
 This program abides by the Stanford [Code of Conduct](https://adminguide.stanford.edu/chapter-1/subchapter-1/policy-1-1-1).
@@ -22,18 +14,18 @@ This program abides by the Stanford [Code of Conduct](https://adminguide.stanfor
 Our ultimate goal is to create a psychologically warm, safe, and productive environment for learning. 
 
 Please reach out to the technical mentors or faculty at any point in time.
-If you have a concern that you would like to submit anonymously, you can do so [here](https://docs.google.com/forms/d/e/1FAIpQLSfmiXSa1d4n_qEcD7jvVSpCY3LN4_tKHal6Lgi2zQ4eflMmWA/viewform) at any point during the program.
+If you have a concern that you would like to submit anonymously, you can do so via this  [google form](https://docs.google.com/forms/d/e/1FAIpQLSfmiXSa1d4n_qEcD7jvVSpCY3LN4_tKHal6Lgi2zQ4eflMmWA/viewform) at any point during the program.
 
 ### High-Risk Data
 Make sure to follow appropriate [practices](resources/high_risk_data.md) for working with high risk data.
 
 ### Organization and Links
-We have organized the materials for the summer on the group [GitLab](https://code.stanford.edu/dssg_stanford) and [Google Drive](https://drive.google.com/drive/u/3/folders/174A-mKJi0dqYN8NNDzNI1OE90bSEE4Ig). 
-GitLab contains code and the course site. We are using Google Drive primarily for Documentation and organizing shared files (e.g. powerpoints).
+
+We have organized the materials for the summer on the group here and in [Google Drive](https://drive.google.com/drive/u/3/folders/174A-mKJi0dqYN8NNDzNI1OE90bSEE4Ig). We are using Google Drive primarily for Documentation and organizing shared files (e.g. powerpoints). 
 
 Go to this [page](overview.md) for schedules and links to the training materials. 
 
-The structure of the `dssg_stanford` GitLab repository is as follows:
+The structure of the `dssg_stanford` GitHub repository is as follows:
 ```
  |---- README.md            <--- main page
  |---- overview.md          <--- schedule of trainings and talks
@@ -44,8 +36,7 @@ The structure of the `dssg_stanford` GitLab repository is as follows:
  |---- labs/                <--- individual learning activities
 ```
 
-Other code is located in project-specific repositorities on GitLab (for the platelet project, this is `platelet_processing`, `va_dream_team` for the VA team). 
+Student code is located in private project-specific repositorities on [Stanford GitLab](code.stanford.edu).
 
-#### Tips
-**Make sure you are up-to-date!** In your repository - `git pull origin master` to update!
-**Note**: feel free to edit this repo and put in pull ("merge") requests to get the edits on the website. 
+
+If you have any questions about the program, materials, or access, feel free to reach out to *stenhaug * AT *stanford* DOT *edu* or *erflynn* AT *stanford* DOT *edu*.
